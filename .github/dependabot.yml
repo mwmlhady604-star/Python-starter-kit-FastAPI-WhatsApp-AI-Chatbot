@@ -5,10 +5,21 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      dependencies:
+      python-dependencies:
         patterns:
           - "*"
+        applies-to:
+          - version-updates
+          - security-updates
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      actions-dependencies:
+        patterns:
+          - "*"
+        applies-to:
+          - version-updates
+          - security-updates
