@@ -4,7 +4,7 @@ FROM python:3.13-slim-bookworm
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 # Set working directory
-WORKDIR /app
+WORKDIR /app/src
 
 # Copy dependency files
 COPY pyproject.toml uv.lock ./
@@ -13,7 +13,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
 # Copy application code
-COPY src ./src
+COPY src ./ 
 
 # Create a non-root user
 RUN useradd -m appuser && chown -R appuser:appuser /app
